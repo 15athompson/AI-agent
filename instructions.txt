@@ -1,0 +1,4 @@
+run app.py file to use web interface.
+[note: activate virtual env; the app imports research_papers from research.py]
+
+run test.py file to use CLI

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Research AI Agent</title>
+</head>
+<body>
+    <h1>Academic Research AI Agent</h1>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Enter your research query" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if papers %}
+        <h2>Results for "{{ request.form['query'] }}"</h2>
+        {% for paper in papers %}
+            <div style="margin-bottom: 20px;">
+                <h3>{{ paper.title }}</h3>
+                <p><strong>Authors:</strong> {{ paper.authors }}</p>
+                <p><strong>Published:</strong> {{ paper.published }}</p>
+                <p><strong>Summary:</strong> {{ paper.generated_summary }}</p>
+                <p><strong>Link:</strong> <a href="{{ paper.link }}" target="_blank">{{ paper.link }}</a></p>
+                <p><strong>BibTeX:</strong></p>
+                <pre>{{ paper.bibtex }}</pre>
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
